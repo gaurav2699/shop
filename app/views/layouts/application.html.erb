@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+ <head>
+<title>SHOPKEEPERS APP</title>  <%= csrf_meta_tags %>
+<style>
+nav{
+float: left;
+height: 575px;
+background-color: #9C27B0;
+padding-right: 20px;
+border: 30px;
+margin-right: 20px;
+ }
+ .btn{
+ color: white;
+ text-decoration: none;
+ }
+ .container2{
+  border: 20px;
+  margin-left: 40px;
+  }
+ #logo{
+ font-size:400%;
+ text-decoration: none;
+ background-color: #9C27B0;
+
+  float: top;
+  }
+  table, th, td {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+
+   }
+    td, th{
+      border: 1px solid #ddd;
+   padding: 16px; }
+   tr:nth-child(even){background-color: #f2f2f2;}
+   tr:hover {background-color: #ddd;}
+   th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #9C27B0;
+  color: white;
+ }
+  body{
+ background-color: rgb(0,0,50);
+   }
+ .heading{
+  background-color: #9C27B0;
+  height: 70px;
+  padding-top: 20px;
+  }
+}
+</style>
+  <%= stylesheet_link_tag    'application', media: 'all',
+                             'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+     <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+  <div class="container">
+    <center class="heading"><h1>
+    Shopkeepers Inventory</h1>
+    </center>
+    <nav>
+      <ul class="nav navbar-nav navbar-right"><h3>
+        <li><%= link_to "Home",   products_path , class: "btn" %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Account", edit_user_registration_path, class: "btn "  %></li>
+          <li>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete)=%>
+          </li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path, class: "btn " %></li>
+          <li><%= link_to "Sign In", new_user_session_path, class: "btn " %></li>
+        <% end %></h3>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="container2">
+
+  <%= yield %>
+</div></body>
+</html>
